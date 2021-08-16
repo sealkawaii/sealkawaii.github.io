@@ -1,0 +1,223 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	*{
+		margin: 0;
+		user-select: none;
+		outline: none;
+		overflow: hidden;
+		font-family: Arial;
+		border-width: 0;
+	}
+	.bkg{
+		position: absolute;
+		background-image: url("bkg.jpg");
+		background-size: cover;
+		filter: blur(10px) brightness(0.8);
+		width: 100%;
+		height: 100%;	
+		z-index: -1;	
+		transform: scale(1.1);
+	}
+	.form1{
+		position: fixed;
+		width: 600px;
+		background: #343F5688;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		font-size: 40px;
+		text-align: center;		
+		border-radius: 5px;
+		transition: .5s;
+	}
+	.center{
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+	}
+	ln{
+		position: relative;
+		width: 70%;
+		height: 1px;		
+		background-color: #ffffff44;
+	}
+	.cx{
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.title{
+		padding-top: 20px;
+		padding-bottom: 20px;		
+		font-size: 40px;
+	}
+	.text{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: 25px;
+		max-width: 70%;
+		word-wrap: break-word;
+		word-break: normal;
+	}
+	.btn{
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 25px;
+		background: #F54748aa;
+	}
+	.hidden{
+		display: none !important;
+		transition: .5s;
+	}
+	.show{
+		opacity: 100%;
+		transition: .5s;
+	}
+	.form2{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		transition: .5s;
+	}
+	.title2{
+		font-size: 40px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.btn2{
+		font-size: 30px;
+		padding: 10px 20px 10px 20px;
+		border-radius: 5px;
+		position: fixed;
+		background: #55960a;
+
+	}
+	.btnyes{
+		background: #F54748;
+	}
+	.btnno{
+		background: #343F56;
+	}
+	.form3{
+		position: fixed;
+		width: 600px;
+		color: white;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		transition: .5s;
+		background: #343F5688;
+		border-radius: 5px;
+	}
+	.title3{
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 30px;
+	}
+	.input{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: 90%;
+		height: 30px;
+		font-size: 20px;
+		background-color: #00000033;
+		color: white;
+		border-radius: 4px;
+		padding-left: 5px;
+	}
+	.btn3{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-size: 20px;
+		width: 100%;
+		background: #F54748aa;
+		border-radius: 2px;
+	}
+</style>
+<script type="text/javascript">
+	const form1 = {
+		title:"Hellu Sealllll <3",
+		messenger:"Có trò này vui lắm nè :3 Chơi hông :3",
+		sumbit:"Có nhaaaaa"
+	}
+	const form2 = {
+		title:"Sealllll có bakaaaaa không",
+		yes:"Đương nhiên là có",
+		no:"Hônggggggggggggggggg"
+	}
+	const form3 = {
+		title:":3 Bakaaaa lắm :3",
+		messenger:"Seal baka nhất hmt nhaaaaa <3",
+		send:"Click Here"
+	}
+	const link = "https://www.facebook.com/messages/t/100034697032606/";
+</script>
+<body>
+	<div class="bkg"></div>
+	<div class="form1 center hidden">
+		<div class="title cx">
+			<script>document.write(form1.title)</script>
+		</div>
+		<ln class="cx"></ln>
+		<div class="text cx">
+			<script>document.write(form1.messenger)</script>
+		</div>
+		<ln class="cx"></ln>
+		<div class="btn cx"><script>document.write(form1.sumbit)</script></div>
+	</div>
+	<div class="form2 center hidden">
+		<div class="title2"><script>document.write(form2.title)</script></div>
+		<div class="btn2 btnyes center"><script>document.write(form2.yes)</script></div>
+		<div class="btn2 btnno center"><script>document.write(form2.no)</script></div>
+	</div>
+	<div class="form3 center hidden">
+		<div class="title3"><script>document.write(form3.title)</script></div>
+		<ln class="cx"></ln>
+		<input type="text" class="input cx" placeholder="Whyy">
+		<ln class="cx"></ln>
+		<div class="btn3 cx"><script>document.write(form3.send)</script></div>
+	</div>
+</body>
+<script type="text/javascript" src="j.js"></script>
+<script type="text/javascript">
+	var move = true;
+	function genText(){
+		var text = form3.messenger;
+		var old = $(".input").val();
+		if(old.length > text.length){
+			old="";
+		}
+		$(".input").val(text.substr(0,old.length));
+		setTimeout(genText,1);
+	}
+	$(document).ready(function(){		
+		$(".form1").removeClass("hidden");
+		$(".btn").click(function(){
+			$(".form1").addClass("hidden");
+			$(".form2").removeClass("hidden");
+		});
+		$(".btnno").hover(function(){
+			let bleft = Math.floor(Math.random()*(innerWidth-200))+100;
+			let btop = Math.floor(Math.random()*(innerHeight-200))+100;
+			//$(this).css({left:bleft,top:btop});
+			if(move){
+				move = false;
+				$(this).animate({left:bleft,top:btop},200,function(){
+				move = true;
+				});
+			}			
+		});
+		$(".btnyes").click(function(){
+			$(".form2").addClass("hidden");
+			$(".form3").removeClass("hidden");
+			genText();
+		});
+		$(".btn3").click(function(){
+			location.href = link;
+		});
+	});
+</script>
